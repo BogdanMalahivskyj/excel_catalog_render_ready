@@ -12,7 +12,11 @@ app = FastAPI()
 
 def cm_to_px(cm):
     return int(cm * 37.795275591)
-
+    
+@app.get("/")
+def root():
+    return {"status": "ok"}
+    
 @app.post("/generate_catalog")
 async def generate_catalog(
     excel: UploadFile = File(...),
